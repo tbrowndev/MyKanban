@@ -9,3 +9,8 @@ What I learned:
 - Property and Two-Way Binding
 - Drag and Drop with Angular CDK
 - how to use Dialogs from Angular Material
+
+
+## Example
+
+<img src='https://github.com/tbrowndev/MyKanban/blob/main/src/assets/examples/example.png' title='Example' alt='Example' height="300"/>
