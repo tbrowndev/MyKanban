@@ -6,12 +6,13 @@
     <div class="kanban-container" cdkDropListGroup>
         <div class="kanban-column">
             <div class="kanban-column-title">ToDo</div>
-            <div class="kanban-column-content kanban-column-content-clickable" (click)="handleColumnClick($event)" cdkDropList [cdkDropListData]="todo" (cdkDropListDropped)="handleDrop($event)">
-                <div class="kanban-item" *ngFor="let item of todo" cdkDrag>
-                    {{item}}
+            <div class="kanban-column-content kanban-column-content-clickable" (click)="handleColumnClick($event)" cdkDropList [cdkDropListData]="todo.items" (cdkDropListDropped)="handleDrop($event)">
+                <div class="kanban-item" *ngFor="let item of todo.items" cdkDrag>
+                    <div class="status" [ngStyle]="{'background-color': todo.color}"></div>
+                    {{item.name}}
                 </div>
                 <div class="kanban-new-item" *ngIf="addMode">
-                    <textarea placeholder="New ToDo" wrap="hard" rows="3" [(ngModel)]="newTodo"></textarea>
+                    <textarea placeholder="New ToDo" wrap="hard" rows="8" [(ngModel)]="newTodo.name"></textarea>
                     <div class="new-item-actions">
                         <button class="action-btn" (click)="handleCancel()">Cancel</button>
                         <button class="action-btn" (click)="handleAdd()">Add</button>
@@ -21,25 +22,28 @@
         </div>
         <div class="kanban-column">
             <div class="kanban-column-title">In Progress</div>
-            <div class="kanban-column-content" cdkDropList [cdkDropListData]="inProgress" (cdkDropListDropped)="handleDrop($event)">
-                <div class="kanban-item" *ngFor="let item of inProgress" cdkDrag>
-                    {{item}}
+            <div class="kanban-column-content" cdkDropList [cdkDropListData]="inProgress.items" (cdkDropListDropped)="handleDrop($event)">
+                <div class="kanban-item" *ngFor="let item of inProgress.items" cdkDrag >
+                    <div class="status" [ngStyle]="{'background-color': inProgress.color}"></div>
+                    {{item.name}}
                 </div>
             </div>
         </div>
         <div class="kanban-column">
             <div class="kanban-column-title">on Hold</div>
-            <div class="kanban-column-content" cdkDropList [cdkDropListData]="onHold" (cdkDropListDropped)="handleDrop($event)">
-                <div class="kanban-item" *ngFor="let item of onHold" cdkDrag>
-                    {{item}}
+            <div class="kanban-column-content" cdkDropList [cdkDropListData]="onHold.items" (cdkDropListDropped)="handleDrop($event)">
+                <div class="kanban-item" *ngFor="let item of onHold.items" cdkDrag>
+                    <div class="status" [ngStyle]="{'background-color': onHold.color}"></div>
+                    {{item.name}}
                 </div>
             </div>
         </div>
         <div class="kanban-column">
             <div class="kanban-column-title">Done</div>
-            <div class="kanban-column-content" cdkDropList [cdkDropListData]="done" (cdkDropListDropped)="handleDrop($event)">
-                <div class="kanban-item" *ngFor="let item of done" cdkDrag>
-                    {{item}}
+            <div class="kanban-column-content" cdkDropList [cdkDropListData]="done.items" (cdkDropListDropped)="handleDrop($event)">
+                <div class="kanban-item" *ngFor="let item of done.items" cdkDrag>
+                    <div class="status" [ngStyle]="{'background-color': done.color}"></div>
+                    {{item.name}}
                 </div>
             </div>
         </div>

@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
 import { moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
+import { ToDo } from './types/todo';
+import { Status } from './types/status';
+import { Color } from './types/color';
+import { Column } from './types/column';
 
 @Component({
   selector: 'app-root',
@@ -8,13 +12,19 @@ import { moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
 })
 export class AppComponent {
 
-  todo: string[] = [];
-  inProgress: string[] = [];
-  onHold: string[] = [];
-  done: string[] = [];
+  todo: Column = { color: Color.Blue, items: []};
+  inProgress: Column = { color: Color.LightBlue, items: []};
+  onHold: Column = { color: Color.Red, items: []};
+  done: Column = { color: Color.Green, items: []};
 
-  newTodo: string = '';
-  addMode: boolean = false;
+  newTodo: ToDo = {
+    name: '',
+    status: Status.ToDo,
+    onHoldReason: '',
+    color: Color.Blue
+  };
+
+  addMode: boolean = true;
 
   handleColumnClick(event: any) {
     if (event.target !== event.currentTarget) return;
@@ -22,14 +32,14 @@ export class AppComponent {
   }
 
   handleAdd() {
-    this.todo.push(this.newTodo);
+    this.todo.items.push(this.newTodo);
     this.addMode = false;
-    this.newTodo = '';
+    this.newTodo = {} as ToDo;
   }
 
   handleCancel() {
     this.addMode = false
-    this.newTodo = '';
+    this.newTodo = {} as ToDo;
 
   }
 
