@@ -15,7 +15,7 @@
                     </button>
                 </div>
                 <div class="kanban-new-item" *ngIf="addMode">
-                    <textarea placeholder="New ToDo" wrap="hard" rows="8" [(ngModel)]="newTodo.name"></textarea>
+                    <textarea placeholder="New ToDo" wrap="hard" rows="8" [(ngModel)]="todoNameInput"></textarea>
                     <div class="new-item-actions">
                         <button class="action-btn" (click)="handleCancel()">Cancel</button>
                         <button class="action-btn" (click)="handleAdd()" [disabled]="isValidInput()">Add</button>

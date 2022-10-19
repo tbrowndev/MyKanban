@@ -6,6 +6,7 @@ import { Color } from './types/color';
 import { Column } from './types/column';
 import { MatDialog } from '@angular/material/dialog';
 import { ReasonDialogComponent } from './components/reason-dialog/reason-dialog.component';
+const { v4: uuidv4 } = require('uuid');
 
 @Component({
   selector: 'app-root',
@@ -19,12 +20,7 @@ export class AppComponent {
   onHold: Column = { status: Status.OnHold, color: Color.Red, items: []};
   done: Column = { status: Status.Done, color: Color.Green, items: []};
 
-  newTodo: ToDo = {
-    name: '',
-    status: Status.ToDo,
-    onHoldReason: '',
-    color: Color.LightBlue
-  };
+  public todoNameInput: string = '';
 
   addMode: boolean = false;
 
@@ -46,7 +42,7 @@ export class AppComponent {
    * @returns true or false 
    */
   isValidInput(): boolean {
-    return this.newTodo.name.length <= 5;
+    return this.todoNameInput.length <= 5;
   }
 
   /**
@@ -54,14 +50,17 @@ export class AppComponent {
    * resets new form back to original state
    */
   handleAdd() {
-    this.todo.items.push(this.newTodo);
-    this.addMode = false;
-    this.newTodo = {
-      name: '',
+    /* Create new todo object*/
+    let todo: ToDo = {
+      id: uuidv4(),
+      name: this.todoNameInput,
       status: Status.ToDo,
       onHoldReason: '',
       color: Color.LightBlue
-    };
+    }
+    this.todo.items.push(todo);
+    this.addMode = false;
+    this.todoNameInput = '';
   }
 
   /**
@@ -70,8 +69,7 @@ export class AppComponent {
    * @param item the todo to delete
    */
   handleDelete(list: Column, item: ToDo){
-    list.items = list.items.filter(x => x.name != item.name);
-    /* TODO: Need to add unique identifier to todo object for efficient deletion*/
+    list.items = list.items.filter(x => x.id != item.id);
   }
 
   /**
@@ -79,12 +77,7 @@ export class AppComponent {
    */
   handleCancel() {
     this.addMode = false
-    this.newTodo = {
-      name: '',
-      status: Status.ToDo,
-      onHoldReason: '',
-      color: Color.LightBlue
-    };
+    this.todoNameInput = '';
   }
 
   /**
