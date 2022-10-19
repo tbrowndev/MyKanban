@@ -6,9 +6,16 @@
     <div class="kanban-container" cdkDropListGroup>
         <div class="kanban-column">
             <div class="kanban-column-title">ToDo</div>
-            <div class="kanban-column-content" (click)="handleColumnClick($event)" cdkDropList [cdkDropListData]="todo" (cdkDropListDropped)="handleDrop($event)">
+            <div class="kanban-column-content kanban-column-content-clickable" (click)="handleColumnClick($event)" cdkDropList [cdkDropListData]="todo" (cdkDropListDropped)="handleDrop($event)">
                 <div class="kanban-item" *ngFor="let item of todo" cdkDrag>
                     {{item}}
+                </div>
+                <div class="kanban-new-item" *ngIf="addMode">
+                    <textarea placeholder="New ToDo" wrap="hard" rows="3" [(ngModel)]="newTodo"></textarea>
+                    <div class="new-item-actions">
+                        <button class="action-btn" (click)="handleCancel()">Cancel</button>
+                        <button class="action-btn" (click)="handleAdd()">Add</button>
+                    </div>
                 </div>
             </div>
         </div>

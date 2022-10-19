@@ -8,25 +8,29 @@ import { moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
 })
 export class AppComponent {
 
-  todo = [
-    'Wake Up',
-    'Brush Teeth',
-    'Get Dressed',
-    'Tie Shoes',
-    'Go to Work',
-    'Complete Work Stuff',
-    'Go Home',
-    'Get ready for bed',
-    'Go to bed'
-  ];
+  todo: string[] = [];
+  inProgress: string[] = [];
+  onHold: string[] = [];
+  done: string[] = [];
 
-  inProgress = [];
-  onHold = [];
-  done = [];
+  newTodo: string = '';
+  addMode: boolean = false;
 
   handleColumnClick(event: any) {
     if (event.target !== event.currentTarget) return;
-    console.log('New ToDo for board')
+    this.addMode = true;
+  }
+
+  handleAdd() {
+    this.todo.push(this.newTodo);
+    this.addMode = false;
+    this.newTodo = '';
+  }
+
+  handleCancel() {
+    this.addMode = false
+    this.newTodo = '';
+
   }
 
   handleDrop(event: any) {

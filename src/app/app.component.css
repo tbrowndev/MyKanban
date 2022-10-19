@@ -38,8 +38,11 @@
 
 .kanban-column-content {
     height: 100vh;
-    cursor:text;
     display: block
+}
+
+.kanban-column-content-clickable {
+    cursor:text;
 }
 
 .kanban-item {
@@ -52,6 +55,40 @@
     cursor: move;
     box-sizing: border-box;
 }
+
+.kanban-new-item {
+    min-height: 100px;
+    max-height: fit-content;
+    background-color: lightblue;
+    margin: 4px;
+    padding: 8px;
+    border-radius: 5px;
+    box-sizing: border-box;
+    display: grid;
+}
+
+.kanban-new-item > textarea {
+    resize: none;
+    outline: none;
+    overflow-y: scroll;
+}
+
+.new-item-actions {
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 5px;
+    margin: 4px;
+}
+
+.action-btn {
+    all: unset;
+    width: 50px;
+    height: 30px;
+    background-color: rgba(128, 128, 128, 0.5);
+    text-align: center;
+    cursor: pointer;
+}
+
 
 /* Drag Drop Styling*/
 .cdk-drag-preview {
