@@ -26,7 +26,7 @@ export class AppComponent {
     color: Color.LightBlue
   };
 
-  addMode: boolean = true;
+  addMode: boolean = false;
 
   constructor(public dialog: MatDialog) {}
 
