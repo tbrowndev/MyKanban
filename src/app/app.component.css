@@ -51,7 +51,7 @@
     height: 220px;
     background-color: #ffff88;
     margin: 16px auto;
-    padding-top: 16px;
+    padding-top: 25px;
     cursor: move;
     font-family: 'Reenie Beanie';
     font-size: 25px;
@@ -70,6 +70,23 @@
     right: 0px;
     height: 10px;
     border: none;
+}
+
+.delete-btn {
+    position: absolute;
+    bottom: 5px;
+    left: 5px;
+    width: fit-content;
+    height: fit-content;
+    opacity: 30%;
+    background: none;
+    border: none;
+    color: red;
+}
+
+.delete-btn:hover {
+    opacity: 100%;
+    cursor: pointer;
 }
 
 .message {

@@ -6,4 +6,5 @@ export enum Status {
     InProgress,
     OnHold,
     Done,
+    Trash,
 }

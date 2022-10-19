@@ -9,4 +9,5 @@ export interface ToDo {
     status: Status,
     onHoldReason: string,
     color: Color,
+    /*TODO: Need to add unique identifier*/
 }

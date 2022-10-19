@@ -10,6 +10,9 @@
                 <div class="kanban-item" *ngFor="let item of todo.items" cdkDrag>
                     <div class="status" [ngStyle]="{'background-color': todo.color}"></div>
                     {{item.name}}
+                    <button class="delete-btn" (click)="handleDelete(todo, item)">
+                        <span class="material-symbols-outlined">delete</span>
+                    </button>
                 </div>
                 <div class="kanban-new-item" *ngIf="addMode">
                     <textarea placeholder="New ToDo" wrap="hard" rows="8" [(ngModel)]="newTodo.name"></textarea>
@@ -26,6 +29,9 @@
                 <div class="kanban-item" *ngFor="let item of inProgress.items" cdkDrag >
                     <div class="status" [ngStyle]="{'background-color': inProgress.color}"></div>
                     {{item.name}}
+                    <button class="delete-btn">
+                        <span class="material-symbols-outlined">delete</span>
+                    </button>
                 </div>
             </div>
         </div>
@@ -36,6 +42,9 @@
                     <div class="status" [ngStyle]="{'background-color': onHold.color}"></div>
                     {{item.name}}
                     <div class="message" [ngStyle]="{'color': onHold.color}">Reason: {{item.onHoldReason}}</div>
+                    <button class="delete-btn">
+                        <span class="material-symbols-outlined">delete</span>
+                    </button>
                 </div>
             </div>
         </div>
@@ -45,9 +54,11 @@
                 <div class="kanban-item" *ngFor="let item of done.items" cdkDrag>
                     <div class="status" [ngStyle]="{'background-color': done.color}"></div>
                     {{item.name}}
+                    <button class="delete-btn">
+                        <span class="material-symbols-outlined">delete</span>
+                    </button>
                 </div>
             </div>
         </div>
     </div>
-
 </div>

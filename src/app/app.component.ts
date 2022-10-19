@@ -65,6 +65,16 @@ export class AppComponent {
   }
 
   /**
+   * given column and todo item. remove item from list
+   * @param list the column where todos are stored
+   * @param item the todo to delete
+   */
+  handleDelete(list: Column, item: ToDo){
+    list.items = list.items.filter(x => x.name != item.name);
+    /* TODO: Need to add unique identifier to todo object for efficient deletion*/
+  }
+
+  /**
    * reverts new form back to original state
    */
   handleCancel() {
