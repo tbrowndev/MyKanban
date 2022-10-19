@@ -60,6 +60,7 @@
     border-bottom-right-radius: 80px 25px;
     box-shadow: 18px 15px 20px 0px rgba(0, 0, 0, 0.12);
     transform: rotate(-3deg);
+    overflow-y: scroll;
 }
 
 .status {
@@ -69,7 +70,13 @@
     right: 0px;
     height: 10px;
     border: none;
+}
 
+.message {
+    height: fit-content;
+    font-size: 10pt;
+    font-family: sans-serif;
+    border: none;
 }
 
 .kanban-new-item {

@@ -1,6 +1,6 @@
 export enum Color {
-    Blue = 'rgb(0, 0, 255, 0.3)',
-    Green = 'rgb(0, 255, 0, 0.9)',
     LightBlue = 'rgb(0, 0, 255, 0.5)',
+    Green = 'rgb(0, 255, 0, 0.9)',
+    Blue = 'rgb(0, 0, 255, 0.8)',
     Red = 'rgb(255, 0, 0, 0.9)',
 }
