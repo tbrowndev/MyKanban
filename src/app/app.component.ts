@@ -30,15 +30,29 @@ export class AppComponent {
 
   constructor(public dialog: MatDialog) {}
 
+  /**
+   * opens new toDo for for adding 
+   * this has to check if the element click was indeed the column and not child elements
+   * @param event the element that made the call
+   * @returns None
+   */
   handleColumnClick(event: any) {
     if (event.target !== event.currentTarget) return;
     this.addMode = true;
   }
 
+  /**
+   * verify the new todo input has at least 5 characters before allowing add
+   * @returns true or false 
+   */
   isValidInput(): boolean {
     return this.newTodo.name.length <= 5;
   }
 
+  /**
+   * handles adding new todo to list
+   * resets new form back to original state
+   */
   handleAdd() {
     this.todo.items.push(this.newTodo);
     this.addMode = false;
@@ -50,6 +64,9 @@ export class AppComponent {
     };
   }
 
+  /**
+   * reverts new form back to original state
+   */
   handleCancel() {
     this.addMode = false
     this.newTodo = {
@@ -60,6 +77,11 @@ export class AppComponent {
     };
   }
 
+  /**
+   * handles changing the status of the todo object and adds todo object to list user dragged and dropped into
+   * @param event 
+   * @param status the status of the column the element was droped into 
+   */
   handleDrop(event: any, status: Status) {
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);

@@ -11,8 +11,4 @@ export class ReasonDialogComponent {
 
   constructor(public dialogRef: MatDialogRef<ReasonDialogComponent>, @Inject(MAT_DIALOG_DATA) public data: ToDo) {}
 
-  onNoClick(): void {
-    this.dialogRef.close();
-  }
-
 }
