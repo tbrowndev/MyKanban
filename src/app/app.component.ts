@@ -35,6 +35,10 @@ export class AppComponent {
     this.addMode = true;
   }
 
+  isValidInput(): boolean {
+    return this.newTodo.name.length <= 5;
+  }
+
   handleAdd() {
     this.todo.items.push(this.newTodo);
     this.addMode = false;

@@ -15,7 +15,7 @@
                     <textarea placeholder="New ToDo" wrap="hard" rows="8" [(ngModel)]="newTodo.name"></textarea>
                     <div class="new-item-actions">
                         <button class="action-btn" (click)="handleCancel()">Cancel</button>
-                        <button class="action-btn" (click)="handleAdd()">Add</button>
+                        <button class="action-btn" (click)="handleAdd()" [disabled]="isValidInput()">Add</button>
                     </div>
                 </div>
             </div>
