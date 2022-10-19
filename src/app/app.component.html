@@ -1,0 +1,41 @@
+<div class="container">
+    <div class="title-container">
+        <h1 class="title">My Kanban</h1>
+    </div>
+
+    <div class="kanban-container" cdkDropListGroup>
+        <div class="kanban-column">
+            <div class="kanban-column-title">ToDo</div>
+            <div class="kanban-column-content" (click)="handleColumnClick($event)" cdkDropList [cdkDropListData]="todo" (cdkDropListDropped)="handleDrop($event)">
+                <div class="kanban-item" *ngFor="let item of todo" cdkDrag>
+                    {{item}}
+                </div>
+            </div>
+        </div>
+        <div class="kanban-column">
+            <div class="kanban-column-title">In Progress</div>
+            <div class="kanban-column-content" cdkDropList [cdkDropListData]="inProgress" (cdkDropListDropped)="handleDrop($event)">
+                <div class="kanban-item" *ngFor="let item of inProgress" cdkDrag>
+                    {{item}}
+                </div>
+            </div>
+        </div>
+        <div class="kanban-column">
+            <div class="kanban-column-title">on Hold</div>
+            <div class="kanban-column-content" cdkDropList [cdkDropListData]="onHold" (cdkDropListDropped)="handleDrop($event)">
+                <div class="kanban-item" *ngFor="let item of onHold" cdkDrag>
+                    {{item}}
+                </div>
+            </div>
+        </div>
+        <div class="kanban-column">
+            <div class="kanban-column-title">Done</div>
+            <div class="kanban-column-content" cdkDropList [cdkDropListData]="done" (cdkDropListDropped)="handleDrop($event)">
+                <div class="kanban-item" *ngFor="let item of done" cdkDrag>
+                    {{item}}
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
